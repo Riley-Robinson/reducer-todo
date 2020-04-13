@@ -1,23 +1,23 @@
-import React, {useState} from 'react'
-        export function TodoForm (props) {
-            const [form, setform] = useState('')
+import React, { useState } from 'react'
 
-            return(
-                <form onSubmit={(event) => {
-                    event.preventDefault()
-                    props.addTodo(form)
-                    setForm('')
-                }}>
-                    <input
-                        name='todo'
-                        placeholder='Add Todo'
-                        value={form}
-                        onChange={(event) => {
-                            setForm(event.target.value)
-                        }}
-                        />
+export function TodoForm (props) {
+    const [form, setForm] = useState('')
+   return(
 
-                        <button type='submit'>Add Todo the stuff</button>
-                </form>
-            )
-        }
+    <form onSubmit={(event) => {
+        event.preventDefault()
+        props.addTodo(form)
+        setForm('')
+    }}>
+        <input 
+            name='todo'
+            placeholder='Add Todo'
+            value={form}
+            onChange={(event) => {
+                setForm(event.target.value)
+            }}
+        />
+        <button type='submit'>Add Todo</button>
+    </form>
+   )
+} 

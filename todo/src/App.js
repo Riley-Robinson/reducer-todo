@@ -1,26 +1,41 @@
-import React, {useReducer} from 'react';
-import {TodoForm} from "./components/TodoForm";
-import {TodoList} from './components/TodoList';
-import {initialState, reducer} from './reducers/reducer';
+import React, { useReducer } from 'react';
+import { TodoForm } from './components/TodoForm';
+import { TodoList } from './components/TodoList';
+import { initialState, reducer } from './reducers/reducer';
+
 function App() {
+  const [state, dispatch] = useReducer(reducer, initialState)
+  console.log(state)
+  const addTodo = (input) => {
+    const newTodo = {
+      todo: input,
+      completed: false,
+      id: 4
+    }
+    dispatch({type: "ADD_TODO", payload: newTodo})
+  }
+
+  const handleComplete = (id) => {
+    dispatch({type:"COMPLETED_TODO", payload: id})
+  }
+
+  const clearCompleted = () => {
+    dispatch({type: "CLEAR_COMPLETED_TODO"})
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>
+      todo 
+      list of evil</h1>
+      <TodoList state={state} handleComplete={handleComplete} />
+      <TodoForm addTodo={addTodo} />
+      <button onClick={(e) => {
+        e.preventDefault()
+        clearCompleted()
+      }}>Clear EVil Task</button>
     </div>
   );
 }
 
-export default App;
+export default App; 
