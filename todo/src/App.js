@@ -1,7 +1,7 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React, {useReducer} from 'react';
+import {TodoForm} from "./components/TodoForm";
+import {TodoList} from './components/TodoList';
+import {initialState, reducer} from './reducers/reducer';
 function App() {
   return (
     <div className="App">
