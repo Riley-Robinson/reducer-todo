@@ -17,7 +17,7 @@ export function TodoForm (props) {
                 setForm(event.target.value)
             }}
         />
-        <button type='submit'>Add Todo</button>
+        <button type='submit'>Add To do EVIL THINGS</button>
     </form>
    )
 } 
